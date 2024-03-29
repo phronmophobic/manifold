@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: DoozyX/clang-format-lint-action@v0.17
+    - uses: DoozyX/clang-format-lint-action@v0.14
       with:
         source: '.'
-        exclude: '*/third_party'
+        exclude: '*/third_party','*/java'
         extensions: 'h,cpp,js,ts,html'
         clangFormatVersion: 11
     - uses: psf/black@stable
