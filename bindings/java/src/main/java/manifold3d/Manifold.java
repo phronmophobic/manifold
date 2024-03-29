@@ -175,6 +175,15 @@ public class Manifold extends Pointer {
         return this.slice((float) 0.0);
     }
 
+    @Name("CalculateNormals")
+    public native @ByVal Manifold calculateNormals(int normalIdx, float minSharpAngle);
+
+    @Name("SmoothByNormals")
+    public native @ByVal Manifold smoothByNormals(int normalIdx);
+
+    @Name("SmoothOut")
+    public native @ByVal Manifold smoothOut(float minSharpAngle, float minSmoothness);
+
     @Name("Project")
     public native @ByVal CrossSection project();
 

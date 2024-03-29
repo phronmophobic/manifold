@@ -1,11 +1,65 @@
+[![Clojars Project](https://img.shields.io/clojars/v/org.clojars.cartesiantheatrics/manifold3d.svg)](https://clojars.org/org.clojars.cartesiantheatrics/manifold3d)
 [![codecov](https://codecov.io/github/elalish/manifold/branch/master/graph/badge.svg?token=IIA8G5HVS7)](https://codecov.io/github/elalish/manifold)
 [![PyPI version](https://badge.fury.io/py/manifold3d.svg)](https://badge.fury.io/py/manifold3d)
 [![npm version](https://badge.fury.io/js/manifold-3d.svg)](https://badge.fury.io/js/manifold-3d)
 [![twitter](https://img.shields.io/twitter/follow/manifoldcad?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=manifoldcad)
 
-## Users
+This fork Maintains java/JNI bindings to [Manifold](https://github.com/elalish/manifold). It supports nearly all the features, plus extends Manifold with support for polyhedrons and lofts. It has builds for linux and mac (experimental builds for windows have been dropped).
 
-[OpenSCAD](https://openscad.org/), [IFCjs](https://ifcjs.github.io/info/), [Grid.Space](https://grid.space/), and [OCADml](https://github.com/OCADml/OManifold) have all integrated our Manifold geometry kernel! Why? Because its reliability is guaranteed and it's 1,000 times faster than other libraries. See our [usage](https://github.com/elalish/manifold/discussions/340) and [performance](https://github.com/elalish/manifold/discussions/383) discussions for all the latest and to add your own projects & analyses.
+Consider using the [Clojure library](https://github.com/SovereignShop/clj-manifold3d) for a great interactive development environment for solid modeling. 
+
+## Example
+
+``` java
+package manifold3d;
+
+import manifold3d.Manifold;
+import manifold3d.pub.DoubleMesh;
+import manifold3d.glm.DoubleVec3;
+import manifold3d.manifold.MeshIO;
+import manifold3d.manifold.ExportOptions;
+
+public class ManifoldExample {
+
+    public static void main(String[] args) {
+        Manifold sphere = Manifold.Sphere(10.0f, 20);
+        Manifold cube = Manifold.Cube(new DoubleVec3(15.0, 15.0, 15.0), false);
+        Manifold cylinder = Manifold.Cylinder(3, 30.0f, 30.0f, 0, false)
+                .translateX(20).translateY(20).translateZ(-3.0);
+
+        // Perform Boolean operations
+        Manifold diff = cube.subtract(sphere);
+        Manifold intersection = cube.intersect(sphere);
+        Manifold union = cube.add(sphere);
+
+        ExportOptions opts = new ExportOptions();
+        opts.faceted(false);
+
+        MeshIO.ExportMesh("CubeMinusSphere.stl", diff.getMesh(), opts);
+        MeshIO.ExportMesh("CubeIntersectSphere.glb", intersection.getMesh(), opts);
+        MeshIO.ExportMesh("CubeUnionSphere.obj", union.getMesh(), opts);
+
+        Manifold hull = cylinder.convexHull(cube.translateZ(100.0));
+        MeshIO.ExportMesh("hull.glb", hull.getMesh(), opts);
+    }
+}
+```
+
+
+## Installation
+
+You need to include a classifier for your platform and desired backend. For linux, a TBB (Threading Building Blocks) backend is available with classifier `linux-TBB-x86_64`. The most battle tested version is the single-threaded implementation: `linux-x86_64` (NOTE: CUDA backends were removed in 1.0.73). 
+
+Similarly for mac, `mac-TBB-x86_64` and `mac-x86_64` classifiers are available.
+
+The Manifold .so libs are included in the bindings jar. You'll also need to have libassimp installed on your system:
+
+``` sh
+;; Ubuntu
+sudo apt install libassimp-dev
+;; Mac
+brew install pkg-config assimp
+```
 
 ## Manifold Frontend Sandboxes
 
