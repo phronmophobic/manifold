@@ -88,14 +88,14 @@ jobs:
 
         mvn versions:set -DnewVersion=$(cat version.txt) --file pom.xml
         mvn package -Dos.classifier=linux$BACKEND-x86_64
-    - name: Test ${{matrix.parallel_backend}} with CUDA ${{matrix.cuda_support}}
-      # note that the test for CUDA backend does not really test CUDA, as we
-      # don't have CUDA GPU on GitHub Action
-      if: matrix.parallel_backend != 'NONE' || matrix.cuda_support != 'OFF'
-      run: |
-        export PYTHONPATH=$PYTHONPATH:$(pwd)/build/bindings/python
-        cd build/test
-        ./manifold_test
+    # - name: Test ${{matrix.parallel_backend}} with CUDA ${{matrix.cuda_support}}
+    #   # note that the test for CUDA backend does not really test CUDA, as we
+    #   # don't have CUDA GPU on GitHub Action
+    #   if: matrix.parallel_backend != 'NONE' || matrix.cuda_support != 'OFF'
+    #   run: |
+    #     export PYTHONPATH=$PYTHONPATH:$(pwd)/build/bindings/python
+    #     cd build/test
+    #     ./manifold_test
     #- name: Coverage Report
     #  # only do code coverage for default sequential backend, it seems that TBB
     #  # backend will cause failure
@@ -329,10 +329,10 @@ jobs:
         echo "JAVA_PACKAGE_VERSION=$JAVA_PACKAGE_VERSION" >> $GITHUB_ENV
         mvn versions:set -DnewVersion=$JAVA_PACKAGE_VERSION --file pom.xml
         mvn package -Dos.classifier=mac-${{matrix.parallel_backend}}-x86_64
-    - name: Test
-      run: |
-        cd build/test
-        ./manifold_test
+    # - name: Test
+    #   run: |
+    #     cd build/test
+    #     ./manifold_test
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:

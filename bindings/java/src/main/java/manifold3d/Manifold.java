@@ -28,6 +28,7 @@ import manifold3d.glm.DoubleVec3Vector;
 import manifold3d.glm.DoubleMat4x3;
 import manifold3d.glm.DoubleVec2;
 import manifold3d.glm.DoubleVec3;
+import manifold3d.glm.IntegerVec3;
 
 import org.bytedeco.javacpp.*;
 import org.bytedeco.javacpp.annotation.*;
@@ -99,7 +100,7 @@ public class Manifold extends Pointer {
 
     // Methods
     @Name("GetMesh") public native @ByVal DoubleMesh getMesh();
-    @Name("GetMeshGL") public native @ByVal MeshGL getMeshGL(@ByRef DoubleVec3 normalIdx);
+    @Name("GetMeshGL") public native @ByVal MeshGL getMeshGL(@ByRef IntegerVec3 normalIdx);
     @Name("IsEmpty") public native boolean isEmpty();
     @Name("Status") public native @Cast("manifold::Manifold::Error") int status();
     @Name("NumVert") public native int numVert();
