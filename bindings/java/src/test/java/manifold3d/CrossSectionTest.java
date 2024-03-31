@@ -36,6 +36,8 @@ public class CrossSectionTest {
         CrossSection innerSection = new CrossSection(innerPolygon, FillRule.NonZero.ordinal())
             .translate(new DoubleVec2(3, 0));
 
+        CrossSection text = CrossSection.Text("DejaVuSans.ttf", "abcdefghijk lmnopqrstuvwxyz", 48, 6);
+
         CrossSection circle = CrossSection.Circle(3.0f, 20);
         Manifold cylinder = Manifold.Extrude(circle, 50, 60, 0, new DoubleVec2(1.0, 1.0));
 
@@ -47,5 +49,6 @@ public class CrossSectionTest {
         DoubleMesh mesh = man.getMesh();
         ExportOptions opts = new ExportOptions();
         MeshIO.ExportMesh("CrossSectionTest.stl", mesh, opts);
+        MeshIO.ExportMesh("TextExtrusion.stl", Manifold.Extrude(text, 200, 1, 0, new DoubleVec2(1.0, 1.0)).getMesh(), opts);
     }
 }

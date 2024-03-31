@@ -63,6 +63,20 @@
                 </includes>
             </resource>
             <resource>
+                <directory>../../build/_deps/texttopolygon-build/</directory>
+                <includes>
+                    <include>libTextToPolygon.so</include>
+                    <include>libTextToPolygon.dylib</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>../../build/_deps/freetype2-build/</directory>
+                <includes>
+                    <include>libfreetype.so</include>
+                    <include>libfreetype.6.16.0.dylib</include>
+                </includes>
+            </resource>
+            <resource>
                 <directory>../../build/src/manifold</directory>
                 <includes>
                     <include>libmanifold.so</include>
@@ -110,6 +124,8 @@
                         <includePath>../../src/cross_section/include/</includePath>
                         <includePath>../../src/third_party/clipper2/CPP/Clipper2Lib/include/</includePath>
                         <includePath>../../build/_deps/glm-src/</includePath>
+                        <includePath>../../build/_deps/texttopolygon-src/include</includePath>
+                        <includePath>../../build/_deps/freetype2-src/include</includePath>
                         <includePath>../../src/polygon/include</includePath>
                         <includePath>../../src/manifold/include/</includePath>
                         <includePath>../../src/utilities/include/</includePath>
