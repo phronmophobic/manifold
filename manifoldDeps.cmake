@@ -40,7 +40,7 @@ endif()
 FetchContent_Declare(
   TextToPolygon
   GIT_REPOSITORY https://github.com/SovereignShop/text-to-polygon.git
-  GIT_TAG 670e4a71ba3dd1de2f7edcf73f748ab4eeec3828
+  GIT_TAG 5d8f0b4bf9b539bcf0eadcea5ea8e6c741343779
 )
 FetchContent_MakeAvailable(TextToPolygon)
 
