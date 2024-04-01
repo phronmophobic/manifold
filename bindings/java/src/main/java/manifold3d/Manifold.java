@@ -46,7 +46,6 @@ public class Manifold extends Pointer {
         if (osName.contains("linux")) {
             try {
                 System.load(Loader.extractResource("/libfreetype.so", null, "libfreetype", ".so").getAbsolutePath());
-                System.load(Loader.extractResource("/libTextToPolygon.so", null, "libTextToPolygon", ".so").getAbsolutePath());
                 System.load(Loader.extractResource("/libmeshIO.so", null, "libmeshIO", ".so").getAbsolutePath());
                 System.load(Loader.extractResource("/libmeshIO.so", null, "libmeshIO", ".so").getAbsolutePath());
                 System.load(Loader.extractResource("/libClipper2.so", null, "libClipper2", ".so").getAbsolutePath());
@@ -70,8 +69,6 @@ public class Manifold extends Pointer {
             try {
                 System.out.println("Loading freetype");
                 System.load(Loader.extractResource("/libfreetype.6.16.0.dylib", null, "libfreetype", ".dylib").getAbsolutePath());
-                System.out.println("Loading textToPolygon");
-                System.load(Loader.extractResource("/libTextToPolygon.dylib", null, "libTextToPolygon", ".dylib").getAbsolutePath());
                 System.out.println("Loading meshIO");
                 System.load(Loader.extractResource("/libmeshIO.dylib", null, "libmeshIO", ".dylib").getAbsolutePath());
                 System.out.println("Loading Manifold");

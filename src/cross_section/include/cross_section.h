@@ -75,7 +75,7 @@ class CrossSection {
   CrossSection(const Polygons& contours,
                FillRule fillrule = FillRule::Positive);
   CrossSection(const Rect& rect);
-  static CrossSection Text(const std::string& fontFile, const std::string& text, u_int32_t pixelHeight, int interpRes);
+  static CrossSection Text(const std::string& fontFile, const std::string& text, u_int32_t pixelHeight, int interpRes, FillRule fillRule);
   static CrossSection Square(const glm::vec2 dims, bool center = false);
   static CrossSection Circle(float radius, int circularSegments = 0);
   ///@}
