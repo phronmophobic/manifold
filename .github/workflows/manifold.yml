@@ -365,6 +365,8 @@ jobs:
 
   deploy_jars:
     runs-on: ubuntu-22.04
+    rules:
+      - if: '$CI_COMMIT_BRANCH == "main"'
     needs: [build, build_mac]
     if: github.event.pull_request.draft == false && ${{needs.build.outputs.java_package_version_changed}} == 'true'
     steps:
