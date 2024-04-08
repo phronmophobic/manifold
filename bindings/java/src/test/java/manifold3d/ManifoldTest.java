@@ -3,10 +3,16 @@ package manifold3d;
 import org.junit.Test;
 import org.junit.Assert;
 import manifold3d.Manifold;
+import manifold3d.glm.DoubleMat4x3;
+import manifold3d.glm.DoubleMat4x3Vector;
 import manifold3d.pub.DoubleMesh;
 import manifold3d.glm.DoubleVec3;
+import manifold3d.glm.DoubleVec2;
 import manifold3d.glm.DoubleVec3Vector;
+import manifold3d.MeshUtils;
 import manifold3d.manifold.MeshIO;
+import manifold3d.manifold.CrossSectionVector;
+import manifold3d.manifold.CrossSection;
 import manifold3d.manifold.ExportOptions;
 
 public class ManifoldTest {
@@ -39,14 +45,18 @@ public class ManifoldTest {
         Manifold hull = cylinder.convexHull(cube.translateZ(100.0));
         DoubleMesh hullMesh = hull.getMesh();
 
-        //Assert.assertEquals(hull.status(), 0);
-        //Assert.assertNotEquals(hull.getProperties().volume(), 0.0, 0.001);
-
         MeshIO.ExportMesh("hull.glb", hullMesh, opts);
-        System.out.println("volume: " + hull.getProperties().volume());
-        System.out.println("Status: " + hull.status());
-        System.out.flush();
         assert hull.getProperties().volume() > 0.0;
+
+        DoubleMat4x3 frame1 = new DoubleMat4x3(1);
+        DoubleMat4x3 frame2 = new DoubleMat4x3(1).translate(new DoubleVec3(0, 0, 20));
+        CrossSection section1 = CrossSection.Square(new DoubleVec2(20, 20), true);
+        CrossSection section2 = CrossSection.Circle(15, 20);
+        Manifold loft = MeshUtils.Loft(new CrossSectionVector(section1, section2),
+                                       new DoubleMat4x3Vector(frame1, frame2),
+                                       MeshUtils.LoftAlgorithm.EagerNearestNeighbor);
+
+        assert loft.getProperties().volume() > 0.0;
 
         DoubleVec3Vector vertPos = hullMesh.vertPos();
     }

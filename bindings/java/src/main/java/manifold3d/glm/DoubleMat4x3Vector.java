@@ -12,6 +12,7 @@ import manifold3d.glm.DoubleMat4x3;
 import org.bytedeco.javacpp.*;
 import org.bytedeco.javacpp.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Iterable;
 import java.util.NoSuchElementException;
@@ -40,6 +41,19 @@ public class DoubleMat4x3Vector extends Pointer implements Iterable<DoubleMat4x3
                 return get(index++);
             }
         };
+    }
+    public DoubleMat4x3Vector(ArrayList<DoubleMat4x3> mats) {
+        allocate();
+        for (DoubleMat4x3 section: mats) {
+            this.pushBack(section);
+        }
+    }
+
+    public DoubleMat4x3Vector(DoubleMat4x3... mats) {
+        allocate();
+        for (DoubleMat4x3 section : mats) {
+            this.pushBack(section);
+        }
     }
 
     public DoubleMat4x3Vector() { allocate(); }
