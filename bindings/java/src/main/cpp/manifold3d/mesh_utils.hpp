@@ -288,7 +288,7 @@ manifold::Manifold Loft(const std::vector<manifold::Polygons>& sections, const s
         case LoftAlgorithm::Isomorphic:
             return IsomorphicLoft(sections, transforms);
         default:
-            return EagerNearestNeighborLoft(sections, transforms);  // Default case, could also throw an exception if unexpected.
+            return EagerNearestNeighborLoft(sections, transforms);
     }
 }
 
