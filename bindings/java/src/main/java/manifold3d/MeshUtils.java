@@ -41,13 +41,13 @@ public class MeshUtils extends Pointer {
         return Polyhedron(verticesPtr, nVertices, faceBufPtr, lengthsPtr, nFaces);
     }
     public static native @ByVal Manifold Loft(@ByRef SimplePolygon polygon, @ByRef DoubleMat4x3Vector transforms);
-    public static native @ByVal Manifold Loft(@ByRef SimplePolygon polygon, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithm_enum);
+    public static native @ByVal Manifold Loft(@ByRef SimplePolygon polygon, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithmEnum);
     public static native @ByVal Manifold Loft(@ByRef Polygons polygons, @ByRef DoubleMat4x3Vector transforms);
-    public static native @ByVal Manifold Loft(@ByRef Polygons polygons, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithm_enum);
+    public static native @ByVal Manifold Loft(@ByRef Polygons polygons, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithmEnum);
     public static native @ByVal Manifold Loft(@ByRef PolygonsVector polygons, @ByRef DoubleMat4x3Vector transforms);
-    public static native @ByVal Manifold Loft(@ByRef PolygonsVector polygons, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithm_enum);
+    public static native @ByVal Manifold Loft(@ByRef PolygonsVector polygons, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithmEnum);
     public static native @ByVal Manifold Loft(@ByRef CrossSectionVector sections, @ByRef DoubleMat4x3Vector transforms);
-    public static native @ByVal Manifold Loft(@ByRef CrossSectionVector sections, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithm_enum);
+    public static native @ByVal Manifold Loft(@ByRef CrossSectionVector sections, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithmEnum);
     public static native @ByVal Manifold Loft(@ByRef CrossSection section, @ByRef DoubleMat4x3Vector transforms);
-    public static native @ByVal Manifold Loft(@ByRef CrossSection section, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithm_enum);
+    public static native @ByVal Manifold Loft(@ByRef CrossSection section, @ByRef DoubleMat4x3Vector transforms, LoftAlgorithm algorithmEnum);
 }
