@@ -53,9 +53,10 @@ public class CrossSectionVector extends Pointer implements Iterable<CrossSection
             this.pushBack(section);
         }
     }
-    public CrossSectionVector(CrossSection[] crossSections) {
+
+    public CrossSectionVector(CrossSection... crossSections) {
         allocate();
-        for (CrossSection section: crossSections) {
+        for (CrossSection section : crossSections) {
             this.pushBack(section);
         }
     }
