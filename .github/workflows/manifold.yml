@@ -331,7 +331,7 @@ jobs:
         install_name_tool -id @rpath/libfreetype.6.16.0.dylib /Users/runner/work/manifold/manifold/build/_deps/freetype2-build/libfreetype.6.dylib
         install_name_tool -change /Users/runner/work/manifold/manifold/build/_deps/freetype2-build/libfreetype.6.dylib @rpath/libfreetype.6.16.0.dylib /Users/runner/work/manifold/manifold/build/src/manifold/libmanifold.2.4.5.dylib
         install_name_tool -change /Users/runner/work/manifold/manifold/build/_deps/freetype2-build/libfreetype.6.dylib @rpath/libfreetype.6.16.0.dylib /Users/runner/work/manifold/manifold/build/meshIO/libmeshIO.dylib
-        install_name_tool -change /opt/homebrew/opt/assimp/lib/libassimp.5.dylib @rpath/libassimp.5.dylib @rpath/libfreetype.6.16.0.dylib /Users/runner/work/manifold/manifold/build/meshIO/libmeshIO.dylib
+        install_name_tool -change /opt/homebrew/opt/assimp/lib/libassimp.5.dylib @rpath/libassimp.5.dylib /Users/runner/work/manifold/manifold/build/meshIO/libmeshIO.dylib
     - name: Find Libs
       run: |
         find . -name "*.dylib"
