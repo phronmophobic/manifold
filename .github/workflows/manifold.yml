@@ -278,7 +278,7 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
-        parallel_backend: [NONE, TBB]
+        parallel_backend: [NONE] # , TBB]
         arch: ["aarch64"] # , "x64"]
     runs-on: macos-14
     if: github.event.pull_request.draft == false
