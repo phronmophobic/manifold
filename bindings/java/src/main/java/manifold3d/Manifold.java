@@ -68,6 +68,7 @@ public class Manifold extends Pointer {
             }
         } else if (osName.contains("mac")) {
             try {
+                System.setProperty("java.library.path", System.getProperty("java.library.path") + ":/opt/homebrew/lib:/usr/local/lib");
                 System.out.println("Loading freetype");
                 System.load(Loader.extractResource("/libfreetype.6.16.0.dylib", null, "libfreetype", ".dylib").getAbsolutePath());
                 System.out.println("Loading meshIO");
