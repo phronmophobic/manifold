@@ -344,7 +344,7 @@ jobs:
         JAVA_PACKAGE_VERSION=$(cat version.txt)
         echo "JAVA_PACKAGE_VERSION=$JAVA_PACKAGE_VERSION" >> $GITHUB_ENV
         mvn versions:set -DnewVersion=$JAVA_PACKAGE_VERSION --file pom.xml
-        mvn package -Dos.classifier=mac-${{matrix.parallel_backend}}-${{matrix.arch}}
+        mvn package -Dos.classifier=mac-${{matrix.parallel_backend}}-${{matrix.arch}} -Djava.library.path=/opt/homebrew/lib:/usr/local/lib
     # - name: Test
     #   run: |
     #     cd build/test
