@@ -324,6 +324,14 @@ jobs:
         cd build
         cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DMANIFOLD_EXPORT=ON -DMANIFOLD_PAR=${{matrix.parallel_backend}} .. && make
       shell: bash
+    - name: Fix rpaths
+      run: |
+        install_name_tool -change /opt/homebrew/opt/libpng/lib/libpng16.16.dylib @rpath/libpng16.16.dylib libfreetype.6.16.0.dylib
+        install_name_tool -change /opt/homebrew/opt/harfbuzz/lib/libharfbuzz.0.dylib @rpath/libharfbuzz.0.dylib libfreetype.6.16.0.dylib
+        install_name_tool -id /Users/runner/work/manifold/manifold/build/_deps/freetype2-build/libfreetype.6.dylib @rpath/libfreetype.6.16.0.dylib
+        install_name_tool -change /Users/runner/work/manifold/manifold/build/_deps/freetype2-build/libfreetype.6.dylib @rpath/libfreetype.6.16.0.dylib /build/src/manifold/libmanifold.2.4.5.dylib
+        install_name_tool -change /Users/runner/work/manifold/manifold/build/_deps/freetype2-build/libfreetype.6.dylib @rpath/libfreetype.6.16.0.dylib ./build/meshIO/libmeshIO.dylib
+        install_name_tool -change /opt/homebrew/opt/assimp/lib/libassimp.5.dylib @rpath/libassimp.5.dylib @rpath/libfreetype.6.16.0.dylib ./build/meshIO/libmeshIO.dylib
     - name: Find Libs
       run: |
         find . -name "*.dylib"
