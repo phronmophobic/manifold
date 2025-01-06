@@ -304,12 +304,12 @@ jobs:
     - name: Install TBB
       if: matrix.parallel_backend == 'TBB'
       run: brew install tbb
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '17'
-          architecture: ${{ matrix.arch }}
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin' # See 'Supported distributions' for available options
+        java-version: '17'
+        architecture: ${{ matrix.arch }}
     - name: Install Java and Maven
       run: |
         brew install --ignore-dependencies maven
