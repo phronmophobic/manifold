@@ -286,8 +286,6 @@ jobs:
           # - os: "macos-latest"
           #   arch: "x86_x64"
           #   parallel_backend: [NONE]
-      matrix:
-        
     runs-on: ${{ matrix.os }}
     if: github.event.pull_request.draft == false
     steps:
@@ -303,7 +301,6 @@ jobs:
       run: |
         python3 -m venv .venv
         brew install pkg-config assimp
-        # pip install trimesh
     - name: Install TBB
       if: matrix.parallel_backend == 'TBB'
       run: brew install tbb
