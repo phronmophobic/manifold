@@ -112,6 +112,25 @@
                 </executions>
             </plugin>
 
+            <!-- try to fix hardcoded library dependencies -->
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <version>3.0.0</version>
+              <executions>
+                <execution>
+                  <id>run-script</id>
+                  <phase>prepare-package</phase> <!-- or another appropriate phase -->
+                  <goals>
+                    <goal>exec</goal>
+                  </goals>
+                  <configuration>
+                    <executable>fix.sh</executable>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
