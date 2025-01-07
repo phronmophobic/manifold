@@ -291,21 +291,19 @@ jobs:
     steps:
     - name: Install Python 3.12
       run: |
-        port install python312
-        # brew update
-        # brew install python@3.12
+        brew update
+        brew install python@3.12
         curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    # - name: Configure Python 3.12 Environment
-    #   run: |
-    #     echo "PATH=$(brew --prefix python@3.12)/bin:/opt/homebrew/opt/python@3.12/libexec/bin:$PATH" >> $GITHUB_ENV
+    - name: Configure Python 3.12 Environment
+      run: |
+        echo "PATH=$(brew --prefix python@3.12)/bin:/opt/homebrew/opt/python@3.12/libexec/bin:$PATH" >> $GITHUB_ENV
     - name: Install common dependencies
       run: |
         python3 -m venv .venv
-        # brew install pkg-config assimp
-        port install pkgconfig assimp
-    # - name: Install TBB
-    #   if: matrix.parallel_backend == 'TBB'
-    #   run: brew install tbb
+        brew install pkg-config assimp
+    - name: Install TBB
+      if: matrix.parallel_backend == 'TBB'
+      run: brew install tbb
     - name: Setup Java
       uses: actions/setup-java@v2
       with:
@@ -314,8 +312,7 @@ jobs:
         architecture: ${{ matrix.arch }}
     - name: Install Java and Maven
       run: |
-        port install maven3
-        # brew install --ignore-dependencies maven
+        brew install --ignore-dependencies maven
     - name: Check Java version
       run: java -version
     - uses: actions/checkout@v3
