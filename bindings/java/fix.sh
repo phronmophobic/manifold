@@ -16,5 +16,5 @@ set -x
 # install_name_tool -change /opt/homebrew/opt/harfbuzz/lib/libharfbuzz.0.dylib '@rpath/libharfbuzz.0.dylib' target/classes/libmanifold.3.0.0.dylib 
 
 install_name_tool -change /opt/homebrew/opt/assimp/lib/libassimp.5.dylib '/opt/local/lib/libassimp.5.dylib' target/classes/libmanifold.3.0.0.dylib 
-install_name_tool -change /opt/homebrew/opt/libpng/lib/libpng16.16.dylib '/opt/local/lib/libz.1.dylib' target/classes/libmanifold.3.0.0.dylib 
+install_name_tool -change /opt/homebrew/opt/libpng/lib/libpng16.16.dylib '/opt/local/lib/libpng16.16.dylib' target/classes/libmanifold.3.0.0.dylib 
 install_name_tool -change /opt/homebrew/opt/harfbuzz/lib/libharfbuzz.0.dylib '/opt/local/lib/libharfbuzz.0.dylib' target/classes/libmanifold.3.0.0.dylib 
