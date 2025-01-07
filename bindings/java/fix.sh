@@ -1,3 +1,8 @@
+#!/bin/sh
+
+set -e
+set -x
+
 # install_name_tool -id '@rpath/libfreetype.6.16.0.dylib' libfreetype.6.16.0.dylib
 # install_name_tool -change /opt/homebrew/opt/libpng/lib/libpng16.16.dylib '@rpath/libpng16.16.dylib' libfreetype.6.16.0.dylib
 # install_name_tool -change /opt/homebrew/opt/harfbuzz/lib/libharfbuzz.0.dylib '@rpath/libharfbuzz.0.dylib' libfreetype.6.16.0.dylib
